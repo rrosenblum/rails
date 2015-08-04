@@ -72,6 +72,10 @@ group :test do
   gem 'benchmark-ips'
 end
 
+gem 'pry'
+gem 'pry-byebug'
+gem 'pry-stack_explorer'
+
 platforms :ruby do
   gem 'nokogiri', '>= 1.4.5'
 

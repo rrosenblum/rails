@@ -36,6 +36,7 @@ module ActiveRecord
     # Note: not all valid +select+ expressions are valid +count+ expressions. The specifics differ
     # between databases. In invalid cases, an error from the database is thrown.
     def count(column_name = nil)
+      return super if block_given?
       calculate(:count, column_name)
     end
 

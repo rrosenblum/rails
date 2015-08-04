@@ -15,6 +15,7 @@ require 'models/developer'
 require 'models/comment'
 require 'models/rating'
 require 'models/post'
+require 'pry'
 
 class NumericData < ActiveRecord::Base
   self.table_name = 'numeric_data'
@@ -302,6 +303,13 @@ class CalculationsTest < ActiveRecord::TestCase
 
   def test_should_sum_scoped_field_with_from
     assert_equal Club.count, Organization.clubs.count
+  end
+
+  def test_should_sum_scoped_field_with_a_block
+    binding.pry
+    expected = Account.where(id: 1).count
+    actual = Account.count { |a| a.id = 1 }
+    assert_equal expected, actual
   end
 
   def test_should_sum_scoped_field_with_conditions
